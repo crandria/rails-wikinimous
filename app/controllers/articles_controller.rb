@@ -1,42 +1,42 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Airplane.all
+    @articles = Article.all
   end
 
   def show
-    @airplane = Airplane.find(params[:id])
+    @article = Article.find(params[:id])
   end
 
   def new
-    @airplane = Airplane.new
+    @article = Article.new
   end
 
   def create
-    @airplane = Airplane.new(airplane_params)
-    @airplane.save
+    @article = Article.new(article_params)
+    @article.save
     redirect_to articles_path
   end
 
   def edit
-    @airplane = Airplane.find(params[:id])
+    @article = Article.find(params[:id])
   end
 
   def update
-    @airplane = Airplane.find(params[:id])
-    @airplane.update(params[:airplane])
+    @article = Article.find(params[:id])
+    @article.update(params[:article])
   end
 
   def destroy
 
-    @airplane = Airplane.find(params[:id])
-    @airplane.destroy
+    @article = Article.find(params[:id])
+    @article.destroy
     redirect_to articles_path
   end
 
   private
 
-  def airplane_params
-    params.require(:airplane).permit(:name, :family, :seats)
+  def article_params
+    params.require(:article).permit(:name, :family, :seats)
   end
 
 end
